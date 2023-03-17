@@ -29,17 +29,12 @@ class BlurViewManagerImpl {
       .getDecorView();
     ViewGroup rootView = decorView.findViewById(android.R.id.content);
     Drawable windowBackground = decorView.getBackground();
-    if (Build.VERSION.SDK_INT >= 31) {
-      blurView
-        .setupWith(rootView, new RenderEffectBlur())
-        .setFrameClearDrawable(windowBackground)
-        .setBlurRadius(defaultRadius);
-    } else {
-      blurView
-        .setupWith(rootView, new RenderScriptBlur(ctx))
-        .setFrameClearDrawable(windowBackground)
-        .setBlurRadius(defaultRadius);
-    }
+
+    blurView
+      .setupWith(rootView, new RenderScriptBlur(ctx))
+      .setFrameClearDrawable(windowBackground)
+      .setBlurRadius(defaultRadius);
+    
     return blurView;
   }
 
